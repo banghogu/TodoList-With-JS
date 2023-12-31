@@ -1,0 +1,65 @@
+html {
+    --color-main: #7878FF;
+    --color-white: #FFFFFF;
+}
+body {
+    background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: "Roboto", sans-serif;
+    overflow: hidden;   
+  }
+.todo-container {
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+    background-color:var(--color-white);
+    color:var(--color-main)
+}
+
+/* 모달창이 만들어 지면 뒤에 배경 흐리게하기 */
+body.swal2-shown>[aria-hidden='true'] {
+    transition: 0.1s filter;
+    filter: blur(3px);
+}
+
+/* 할일이 완료된 todo에는 밑줄 긋기 */
+.done {
+    text-decoration: line-through;
+}
+
+/* todoHeader */
+#todoHeaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+    height: 80px;
+}
+#todoHeaderContainer .days{
+    font-family: 'Roboto', sans-serif;;
+    font-size: 28px;
+}
+#todoHeaderContainer .date{
+    color:#9696b3;
+    font-size:20px;
+}
+
+/* todoMain */
+#todoMainContainer{
+    font-family: 'Noto Sans KR', sans-serif;
+    height:400px;
+    border-bottom: 1px solid black;
+}
+
+/* todoFooter */
+.todoFooterContainer{
+    display: flex;
+    justify-content: space-between;
+    margin:20px;
+}
+
+
+/* 수정 */
