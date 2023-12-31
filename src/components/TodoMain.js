@@ -23,53 +23,69 @@ export default class TodoMain extends Component {
 
             displayTodos(todos); //가져온 todos를 화면을 그려주는 displayTodos에 넣어준다.
 
-            function displayTodos(todos) { //화면을 그려주는 함수
-                todoItems.innerHTML = ''; //todoItems들을 초기화 해준 후
+            function displayTodos(todos) {
+                todoItems.innerHTML = '';
+            
+                todos.forEach(todo => {
+                    const todoItem = document.createElement("li");
+                    todoItem.classList.add("todo-item");
 
-                todos.forEach(todo => { //각각의 todo 아이템 마다 요소를 생성한다.
-                    const todoItem = document.createElement("li"); //ul에 들어가야 하니까 li로 만들어주고
+                    const firstItemContainer = document.createElement("div");
+                    firstItemContainer.classList.add("first-item-container")
 
-                    // 할 일 완료 체크박스 추가
-                    const checkbox = document.createElement("input"); //할일 완료 체크박스를 추가해준다.
+                    const itemContainer = document.createElement("div"); // 수정, 삭제 버튼을 감싸는 컨테이너
+                    itemContainer.classList.add("item-container");
+            
+                    const checkbox = document.createElement("input");
+                    checkbox.classList.add("checkbox");
                     checkbox.type = "checkbox";
-                    checkbox.checked = todo.done; //done이 true면 체크박스가 체크 되어있다.
-                    checkbox.addEventListener('change', function () { //체크박스가 변경 될 때마다 
-                        toggleTodoStatus(todo.id, checkbox.checked); //todo.id, 체크박스 체크여부를 함수에 넣어준다.
+                    checkbox.checked = todo.done;
+            
+                    checkbox.addEventListener('change', function () {
+                        toggleTodoStatus(todo.id, checkbox.checked);
                     });
-                    // toggleTodoStatus함수를 돌면 새롭게 아이템들을 가져와서 화면을 보여주는데
-                    if (todo.done) { //todo의 done이 true이면 
-                        todoItem.classList.add('done'); //클래스에 done 추가
+            
+                    if (todo.done) {
+                        todoItem.classList.add('done');
                     }
-                    todoItem.appendChild(checkbox); //체크박스 버튼을 li태그에 넣어준다.
-
-                    // 할일 내용 출력
-                    const todoContent = document.createElement("span"); //item title이 들어갈 span태그를 만들고
-                    todoContent.textContent = todo.title; // item title을 넣어주고
-                    todoItem.appendChild(todoContent); //text를 li태그에 넣어준다.
-
-                    // 수정버튼 추가
+            
+                    const todoContent = document.createElement("span");
+                    todoContent.textContent = todo.title;
+            
                     const editButton = document.createElement("button");
                     editButton.textContent = "수정";
+                    editButton.classList.add("hidden");
                     if (todo.done) {
                         editButton.style.display = 'none';
                     }
                     editButton.addEventListener('click', function () {
                         showEditOptions(todo);
-                      });
-
-                    todoItem.appendChild(editButton);
-
-                    // 삭제 버튼 추가
-                    const deleteButton = document.createElement("button"); //삭제 버튼을 만들고
-                    deleteButton.textContent = "삭제"; //버튼 요소 text는 삭제
-                    deleteButton.addEventListener('click', function () { //삭제 버튼을 클릭하면?
-                        deleteTodoByIdWithConfirmation(todo.id); //해당 todo id를 함수에 넣어준다.
                     });
-                    todoItem.appendChild(deleteButton); //li태그에 deleteButton을 넣어준다.
+            
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "삭제";
+                    deleteButton.classList.add("hidden");
+                    deleteButton.addEventListener('click', function () {
+                        deleteTodoByIdWithConfirmation(todo.id);
+                    });
+            
+                    itemContainer.appendChild(editButton);
+                    itemContainer.appendChild(deleteButton);
+                    firstItemContainer.appendChild(checkbox)
+                    firstItemContainer.appendChild(todoContent)
+                    todoItem.appendChild(firstItemContainer);
+                    todoItem.appendChild(itemContainer);
 
-                    //모든 요소들을 todoitem li태그에 넣어준다. 각 item완성
+                    todoItem.addEventListener('mouseenter', function () {
+                        editButton.classList.remove('hidden');
+                        deleteButton.classList.remove('hidden');
+                    });
+            
+                    todoItem.addEventListener('mouseleave', function () {
+                        editButton.classList.add('hidden');
+                        deleteButton.classList.add('hidden');
+                    });
                     todoItems.appendChild(todoItem);
-
                 });
             }
             

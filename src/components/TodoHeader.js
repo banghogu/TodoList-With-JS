@@ -23,7 +23,7 @@ export default class TodoHeader extends Component {
         this.state.today.date = `${months[today.getMonth()]} ${today.getDate()}`;
         this.el.innerHTML = /* html */`
             <div id="todoHeaderContainer">
-                <span class="days">${this.state.today.days} , </span>&nbsp;
+                <span class="days">${this.state.today.days}, </span>&nbsp;
                 <span class="date">${this.state.today.date}</span>
             </div>
         `;

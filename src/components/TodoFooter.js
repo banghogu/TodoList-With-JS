@@ -13,9 +13,7 @@ export default class TodoFooter extends Component {
             <div class="todoFooterContainer">
                 <div class="tasksContainer">
                 </div>
-                <div>
-                    <button class="addTodoButton">Add New +</button>
-                </div>
+                <div class="addTodoButton">Add New +</div>
             </div>
         `;
 
