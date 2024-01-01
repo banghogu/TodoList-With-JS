@@ -89,25 +89,4 @@ export default class TodoCrudApi {
       return fetch(`https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/${todoId}`, requestOptions)
         .then(response => response.json());
     }
-  
-    static deleteAllTodosFromAPI(todoIds) {
-      const myHeaders = new Headers();
-      myHeaders.append("content-type", "application/json");
-      myHeaders.append("apikey", "KDT7_GrZ1eYBo");
-      myHeaders.append("username", "KDT7_BangHoJin");
-  
-      const raw = JSON.stringify({
-        "todoIds": todoIds
-      });
-  
-      const requestOptions = {
-        method: 'DELETE',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-      };
-  
-      return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/deletions", requestOptions)
-        .then(response => response.json());
-    }
   }
