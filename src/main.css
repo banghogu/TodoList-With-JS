@@ -25,12 +25,6 @@ body {
     border-radius: 20px
 }
 
-/* 모달창이 만들어 지면 뒤에 배경 흐리게하기 */
-body.swal2-shown>[aria-hidden='true'] {
-    transition: 0.1s filter;
-    filter: blur(3px);
-}
-
 /* 할일이 완료된 todo에는 밑줄 긋기 */
 .done {
     text-decoration: line-through;
