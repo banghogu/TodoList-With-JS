@@ -11,8 +11,8 @@ export default class Weather extends Component {
 
     getWeatherData() {
         const cityName = 'Seoul';
-        const myApi = "4df2c44f2654a2beaee498f3dc7a1a59";
-        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myApi}`;
+        const API_KEY = config.apikey;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
 
         fetch(apiUrl)
             .then((response) => response.json())

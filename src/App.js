@@ -1,9 +1,13 @@
 import {Component} from './core/core'
-import Homepage from './page/Homepage'
+import TheHeader from './components/TheHeader'
+import TheFooter from './components/TheFooter'
+
 
 export default class App extends Component {
     render(){
-        const homepage = new Homepage().el 
-        this.el.append(homepage)
+        const routerView = document.createElement('router-view');
+        const theHeader = new TheHeader().el 
+        const theFooter = new TheFooter().el
+        this.el.append(theHeader,routerView,theFooter)
     }
 }
