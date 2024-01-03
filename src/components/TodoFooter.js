@@ -22,10 +22,6 @@ export default class TodoFooter extends Component {
         `;
 
         const tasksContainer = this.el.querySelector('.tasksContainer');
-        TodoCrudApi.getTodos()
-            .then(todos => {
-                const todoItemCount = todos.length;
-                tasksContainer.textContent = `${todoItemCount} tasks`
-            });
+        tasksContainer.textContent = `${store.state.todoItems.length} tasks`
     }
 }

@@ -38,7 +38,7 @@ export default class TodoMainItem extends Component {
             await deleteHandler(todoId);
         });
         deleteModal.showConfirmation(todoId);
-        
+
         async function deleteHandler(todoId) {
             await TodoCrudApi.deleteTodoById(todoId);
             const updatedTodoItems = store.state.todoItems.filter(item =>
@@ -46,7 +46,6 @@ export default class TodoMainItem extends Component {
             );
             store.setState({ todoItems: updatedTodoItems });
             deleteModal.showDeletionSuccess();
-
         }
     }
 
@@ -54,10 +53,13 @@ export default class TodoMainItem extends Component {
         const { id, title, done } = this.props.todoitem;
         this.el.classList.add("todo-item");
         this.el.innerHTML = /* html */`
-            <input type="checkbox" class="checkbox" ${done ? "checked" : ""}>
-            <span>${title}</span>
-            <button class="hidden editBtn">수정</button>
-            <button class="hidden deleteBtn">삭제</button>
+        <div class="todo-item-left"> 
+           <input type="checkbox" class="checkbox" ${done ? "checked" : ""}>
+            <span>${title}</span></div>
+        <div class="todo-item-right">
+           <button class="hidden editBtn Btn">수정</button>
+           <button class="hidden deleteBtn Btn">삭제</button>
+        </div>  
         `;
 
         const checkbox = this.el.querySelector('.checkbox');
@@ -88,7 +90,8 @@ export default class TodoMainItem extends Component {
         if (done) {
             const todoTitle = this.el.querySelector('span');
             todoTitle.classList.add('done');
-            this.el.removeChild(editBtn); 
+            this.el.removeChild(editBtn);
         }
+
     }
 }

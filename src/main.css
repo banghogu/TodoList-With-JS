@@ -1,3 +1,4 @@
+/* 공통 스타일 지정 */
 html {
     --color-main: #7066e0;
     --color-white: #FFFFFF;
@@ -17,17 +18,13 @@ body {
     position: relative;
 }
 
+/* 전체 todo감싸는 container */
 .todo-container {
     width: 400px;
     height: 600px;
     background-color: var(--color-white);
     color: var(--color-main);
     border-radius: 20px
-}
-
-/* 할일이 완료된 todo에는 밑줄 긋기 */
-.done {
-    text-decoration: line-through;
 }
 
 /* todoHeader */
@@ -58,18 +55,23 @@ body {
     border-bottom: 1px solid rgb(228, 228, 228);
 }
 
+/* 할일이 완료된 todo에는 밑줄 긋기 */
+.done {
+    text-decoration: line-through;
+}
+
 #todoItems {
     display: flex;
     flex-direction: column;
 }
 
-#todoItems li {
+#todoItems .todo-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 20px;
     height: 30px;
-    position: relative; /* hover 효과 적용을 위해 position을 추가 */
+    position: relative;
 }
 
 .checkbox {
@@ -79,31 +81,22 @@ body {
     margin-top: 5px;
 }
 
-.checkbox:checked {
-    background-color: #7066e0;
-    border-radius: 5px; /* 체크된 상태의 백그라운드에도 둥근 모서리 적용 */
-}
-
-#todoItems li .first-item-container {
+/* 체크박스 & todotitle 스팬 묶어서 왼쪽에 배치 */
+#todoItems .todo-item .todo-item-left {
     align-items: center;
     display: flex;
     gap: 10px;
 }
 
-.todo-item:hover button {
-    opacity: 1;
-    pointer-events: auto; /* hover 시 버튼 클릭 가능하도록 변경 */
+/* 수정,삭제 버튼 묶어서 오른쪽에 배치 */
+#todoItems .todo-item .todo-item-right {
+    align-items: center;
+    display: flex;
+    gap: 10px;
 }
 
-.todo-item button {
-    cursor: pointer;
-    transition: opacity 0.2s;
-    opacity: 0;
-    margin-left: 10px; /* 수정과 삭제 버튼 사이에 간격 추가 */
-}
 /* 버튼 스타일 추가 */
-
-#todoItems li .item-container button {
+#todoItems .todo-item .Btn {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -115,56 +108,110 @@ body {
     transition: 0.3s;
 }
 
-#todoItems li .item-container button:hover {
+#todoItems .todo-item .Btn:hover {
     color: #4b42c7;
 }
 
-#todoItems li:hover .item-container button {
+#todoItems .todo-item:hover .Btn {
     opacity: 1;
 }
+
+.todo-item:hover .Btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.todo-item .Btn {
+    cursor: pointer;
+    transition: opacity 0.2s;
+    opacity: 0;
+    margin-left: 10px;
+}
+
 /* todoFooter */
 .todoFooterContainer {
     display: flex;
     justify-content: space-between;
-    
+
     margin: 20px;
     font-size: 18px;
 }
-.addTodoButton{ 
-    width:100px;
-    height:50px;
+
+.addTodoButton {
+    width: 100px;
+    height: 50px;
     cursor: pointer;
     transition: .2s;
-    color:var(--color-main)
-}
-.addTodoButton:hover{
-    
-    color:#9696b3
+    color: var(--color-main)
 }
 
-#weatherContainer {
-    position: absolute;
-    top:-50px;
-    left:0;
-    color: #ffffff;
-    border-radius: 8px;
+.addTodoButton:hover {
+    color: #9696b3
+}
+
+
+/* 날씨 창 */
+div.Wrapper {
     padding: 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 20px;
+    left: 40px;
+    width: 220px;
+}
+
+div.SpaceAround {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+div.TempDiv {
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .temperature {
-    font-size: 36px;
+    color: #000000;
+    font-size:40px;
+}
+
+p.Temperature {
+    font-size: 28px;
     font-weight: bold;
-  }
-  
-  .description {
-    font-size: 18px;
+    margin: 0;
+}
+
+div.WeatherWrapper {
+    text-align: center;
+    color: #fff;
+}
+
+div.ImgFlex {
+    margin-right: 10px;
+}
+
+img.WeatherImg {
+    max-width: 40px;
+    max-height: auto;
+}
+
+div.SpaceAround:last-child {
     margin-top: 10px;
-  }
-  
-  .weather-icon {
-    margin-top: 20px;
-    width: 80px;
-    height: 80px;
-  }
+}
+
+span.slDrop {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: none;
+    margin-right: 5px;
+}
+
+span.slDrop img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.hum{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
