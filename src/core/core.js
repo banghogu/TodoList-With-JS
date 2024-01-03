@@ -65,4 +65,17 @@ export class Component {
         ? this.observers[key].push(cb) // 있으면 새로운 콜백 밀어넣기!
         : this.observers[key] = [cb] // 없으면 콜백 배열로 할당!
     }
+
+
+    //추가했음
+    setState(newState) {
+      for (const key in newState) {
+        if (Object.prototype.hasOwnProperty.call(newState, key)) {
+          this.state[key] = newState[key];
+          if (Array.isArray(this.observers[key])) {
+            this.observers[key].forEach((observer) => observer(newState[key]));
+          }
+        }
+      }
+    }
   }
