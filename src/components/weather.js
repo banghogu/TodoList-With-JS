@@ -11,8 +11,8 @@ export default class Weather extends Component {
 
     getWeatherData() {
         const cityName = 'Seoul';
-        const API_KEY = config.apikey;
-        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
+        const apikey = "4df2c44f2654a2beaee498f3dc7a1a59"
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apikey}`;
 
         fetch(apiUrl)
             .then((response) => response.json())
@@ -29,10 +29,6 @@ export default class Weather extends Component {
                 store.setState({
                     weatherData: newWeatherData,
                 });
-
-                console.log(store.state.weatherData);
-                
-                // 데이터를 가져온 후에 render 메소드를 호출
                 this.render();
             })
             .catch((error) => {

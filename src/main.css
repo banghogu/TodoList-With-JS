@@ -24,7 +24,8 @@ body {
     height: 600px;
     background-color: var(--color-white);
     color: var(--color-main);
-    border-radius: 20px
+    border-radius: 20px;
+    
 }
 
 /* todoHeader */

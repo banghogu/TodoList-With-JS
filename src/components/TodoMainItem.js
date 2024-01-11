@@ -90,7 +90,7 @@ export default class TodoMainItem extends Component {
         if (done) {
             const todoTitle = this.el.querySelector('span');
             todoTitle.classList.add('done');
-            this.el.removeChild(editBtn);
+            editBtn.style.display = 'none';
         }
 
     }

@@ -33,8 +33,18 @@ class CustomModal {
       this.modalHandler(todoId);
     }
   }
+  static showNotAddPrompt() {
+    const MAX_TODO_ITEMS = 6; 
 
-  showDeletionSuccess() {
+    Swal.fire({
+      icon: 'error',
+      title: '죄송합니다...',
+      text: `최대 ${MAX_TODO_ITEMS}개까지 항목만 추가할 수 있습니다.`,
+    });
+  }
+
+
+  static async showDeletionSuccess() {
     Swal.fire({
       title: '삭제되었습니다',
       text: '할일이 삭제 되었습니다.',
