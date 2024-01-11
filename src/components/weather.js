@@ -11,7 +11,7 @@ export default class Weather extends Component {
 
     getWeatherData() {
         const cityName = 'Seoul';
-        const apikey = "4df2c44f2654a2beaee498f3dc7a1a59"
+        const apikey = "4df2c44f2654a2beaee498f3dc7a1a59" //무료버전을 사용하고 있어서, api키를 숨기지 않았습니다
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apikey}`;
 
         fetch(apiUrl)
