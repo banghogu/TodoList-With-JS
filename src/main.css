@@ -5,17 +5,54 @@ html {
 }
 
 body {
-    background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
     font-family: "Roboto", sans-serif;
     overflow: hidden;
+    background-color:#fafafa
+}
+/* 헤더부분 */
+.header{
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 9;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    align-items: flex-end;
+    gap: 60px;
+}
+.header nav ul {
+    display: flex;
+    gap: 14px;
+}
+.header nav ul a{
+   text-decoration: none;
+   color:#9696b3;
+   font-size: 20px;
+   margin-right: 10px;
+   transition: .3s;
+}
+.header nav ul li a.active {
+    color: var(--color-main);
+}
+.header .user {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-area);
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    right: 10px;
+    margin: auto;
+    transition: .3s;
+}
+
+.header .user:hover {
+    transform: scale(1.2);
+}
+
+.header .user img {
+    width: 100%;
 }
 
 /* 전체 todo감싸는 container */
@@ -25,6 +62,8 @@ body {
     background-color: var(--color-white);
     color: var(--color-main);
     border-radius: 20px;
+    margin:0 auto;
+    border:1px solid rgb(180, 180, 180)
     
 }
 
@@ -153,12 +192,13 @@ body {
 
 /* 날씨 창 */
 div.Wrapper {
-    padding: 20px;
+    padding-top: 35px;
+    margin-left: 10px;
     border-radius: 10px;
     position: fixed;
     top: 20px;
-    left: 40px;
     width: 220px;
+    color: #505050;
 }
 
 div.SpaceAround {
@@ -172,12 +212,16 @@ div.TempDiv {
     text-align: center;
     color: #000000;
     font-size:40px;
+    color: #505050;
 }
 
 p.Temperature {
     font-size: 28px;
     font-weight: bold;
     margin: 0;
+}
+.weather-state{
+    color: #505050;
 }
 
 div.WeatherWrapper {
@@ -195,7 +239,7 @@ img.WeatherImg {
 }
 
 div.SpaceAround:last-child {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 span.slDrop {
@@ -215,4 +259,33 @@ span.slDrop img {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.about .photo {
+    width: 230px;
+    height: 230px;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+    background-size: cover;
+}
+
+.about .name {
+    font-size: 40px;
+    font-family: "Oswald", sans-serif;
+    margin-bottom: 20px;
+}
+
+.about p {
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.about a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.about a:hover {
+    text-decoration: underline;
 }

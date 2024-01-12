@@ -49,7 +49,7 @@ export default class Weather extends Component {
                         <div class="ImgFlex">
                             <img src="${imgSrc}" alt="Weather Icon">
                         </div>
-                        <p>${store.state.weatherData.desc}</p>
+                        <p class="weather-state">${store.state.weatherData.desc}</p>
                     </div>
                 </div>
                 <div class="SpaceAround">
